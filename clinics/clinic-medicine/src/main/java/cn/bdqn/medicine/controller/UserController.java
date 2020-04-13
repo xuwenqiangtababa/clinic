@@ -48,11 +48,12 @@ public class UserController {
     @GetMapping("/users")
     public Response getUsers() {
     	Map<String, Object> user1 = new HashMap<String, Object>();
-    	user1.put("id", 1);
-    	user1.put("username", "张三");
-    	user1.put("gender", "男");
+    	Map<String, Object> user2 = new HashMap<String, Object>();
+    	user2.put("id", 2);
+    	user2.put("username", "李四");
+    	user2.put("gender", "女");
     	List<Map<String, Object>> users = new ArrayList<Map<String,Object>>();
-    	users.add(user1);
+    	users.add(user2);
     	return new Response(ResponseEnum.SUCCESS).setResponseBody(users);
     }
 }
