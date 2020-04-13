@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/clines?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+#认证端需要授权路径
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://localhost:9001/oauth/check_token
+server:
+  port: 9003
