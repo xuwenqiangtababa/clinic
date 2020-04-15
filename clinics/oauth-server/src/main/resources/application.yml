@@ -1,14 +1,23 @@
 server:
   port: 9001
-
 #mybatis:
 #  mapper-locations: classpath:mybatis/mapper/*.xml
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/clines?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
-    password: root
+    password: UwkZg9iIuxve8LZpA8skMAhmqOFJXIhWZZV2fXXNYhMOnCfDudVect1e80ULybvv1pCOV8d3BENfgPYery3oug==
     driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      filter:
+        config:
+          enabled: true
+      connection-properties: config.decrypt=true;config.decrypt.key=${public.key}
+    type: com.alibaba.druid.pool.DruidDataSource
+  application:
+    name: oauth-server
+public:
+  key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIqPW1riKaipZmAZp30Wr1bmEbqqA/b3ikzKIucxYPTeN6chcFfNlAlQdlf3UQbW8meFjzzx5MqGBnSlI0y5wnMCAwEAAQ==
 
 logging:
   level:

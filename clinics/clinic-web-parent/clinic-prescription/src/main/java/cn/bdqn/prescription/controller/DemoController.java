@@ -15,15 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Api
 @RestController
-public class TestController {
+public class DemoController {
 	@Value("${server.medicine.url}")
 	private String serverMedicineUrl;
+
+	@Value("${server.masterdata.url}")
+	private String serverMasterdataUrl;
+
 	@Autowired
 	private HttpClientHelper httpClientHelper;
-	
+
+	@GetMapping("api/masterdata/users")
+	public Response getMasterdataUsers() {
+		return httpClientHelper.getForResponse(serverMasterdataUrl + "/api/masterdata/users");
+	}
 	@GetMapping("api/medicine/users")
 	public Response getUsers() {
-		Response response = httpClientHelper.get(serverMedicineUrl + "/api/medicine/users");
+		Response response = httpClientHelper.getForResponse(serverMedicineUrl + "/api/medicine/users");
 		return response;
 	}
 }

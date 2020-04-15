@@ -12,23 +12,27 @@
         <module>clinic-result</module>
         <module>oauth-resources</module>
         <module>oauth-server</module>
-        <module>clinic-prescription</module>
-        <module>clinic-medicine</module>
+        <module>clinic-web-parent</module>
     </modules>
 
-
+<!--    <properties>-->
+<!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+<!--        <maven.compiler.source>1.8</maven.compiler.source>-->
+<!--        <maven.compiler.target>1.8</maven.compiler.target>-->
+<!--        <java.version>1.8</java.version>-->
+<!--        <spring-security-oauth2-autoconfigure.version>2.1.8.RELEASE</spring-security-oauth2-autoconfigure.version>-->
+<!--        <mybatis-spring-boot-starter.version>2.1.1</mybatis-spring-boot-starter.version>-->
+<!--        <pagehelper-spring-boot-starter.version>1.2.13</pagehelper-spring-boot-starter.version>-->
+<!--        <druid-spring-boot-starter.version>1.1.13</druid-spring-boot-starter.version>-->
+<!--        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>-->
+<!--        <pagehelper.version>5.1.11</pagehelper.version>-->
+<!--    </properties>-->
 
     <groupId>com.clinic</groupId>
     <artifactId>clinic</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>clinic</name>
     <description>Demo project for Spring Boot</description>
-
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-
-
     <build>
         <plugins>
             <plugin>
