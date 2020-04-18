@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.prescription.mapper.RecipeTemplateTypeMapper">
+  <resultMap id="BaseResultMap" type="cn.bdqn.prescription.pojo.RecipeTemplateType">
+    <!--@mbg.generated-->
+    <!--@Table recipe_template_type-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="recipe_template_type_name" jdbcType="VARCHAR" property="recipeTemplateTypeName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, recipe_template_type_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from recipe_template_type
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from recipe_template_type
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.prescription.pojo.RecipeTemplateType" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into recipe_template_type (recipe_template_type_name)
+    values (#{recipeTemplateTypeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.prescription.pojo.RecipeTemplateType" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into recipe_template_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recipeTemplateTypeName != null">
+        recipe_template_type_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recipeTemplateTypeName != null">
+        #{recipeTemplateTypeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bdqn.prescription.pojo.RecipeTemplateType">
+    <!--@mbg.generated-->
+    update recipe_template_type
+    <set>
+      <if test="recipeTemplateTypeName != null">
+        recipe_template_type_name = #{recipeTemplateTypeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.bdqn.prescription.pojo.RecipeTemplateType">
+    <!--@mbg.generated-->
+    update recipe_template_type
+    set recipe_template_type_name = #{recipeTemplateTypeName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

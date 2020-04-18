@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.prescription.mapper.RecipeInspectDrugMapper">
+  <resultMap id="BaseResultMap" type="cn.bdqn.prescription.pojo.RecipeInspectDrug">
+    <!--@mbg.generated-->
+    <!--@Table recipe_inspect_drug-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="recipe_id" jdbcType="INTEGER" property="recipeId" />
+    <result column="inspect_id" jdbcType="INTEGER" property="inspectId" />
+    <result column="price" jdbcType="FLOAT" property="price" />
+    <result column="inspect_part" jdbcType="VARCHAR" property="inspectPart" />
+    <result column="number" jdbcType="VARCHAR" property="number" />
+    <result column="create_date" jdbcType="DATE" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, recipe_id, inspect_id, price, inspect_part, `number`, create_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from recipe_inspect_drug
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from recipe_inspect_drug
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.prescription.pojo.RecipeInspectDrug" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into recipe_inspect_drug (recipe_id, inspect_id, price, 
+      inspect_part, `number`, create_date
+      )
+    values (#{recipeId,jdbcType=INTEGER}, #{inspectId,jdbcType=INTEGER}, #{price,jdbcType=FLOAT}, 
+      #{inspectPart,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, #{createDate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.prescription.pojo.RecipeInspectDrug" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into recipe_inspect_drug
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recipeId != null">
+        recipe_id,
+      </if>
+      <if test="inspectId != null">
+        inspect_id,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="inspectPart != null">
+        inspect_part,
+      </if>
+      <if test="number != null">
+        `number`,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recipeId != null">
+        #{recipeId,jdbcType=INTEGER},
+      </if>
+      <if test="inspectId != null">
+        #{inspectId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=FLOAT},
+      </if>
+      <if test="inspectPart != null">
+        #{inspectPart,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bdqn.prescription.pojo.RecipeInspectDrug">
+    <!--@mbg.generated-->
+    update recipe_inspect_drug
+    <set>
+      <if test="recipeId != null">
+        recipe_id = #{recipeId,jdbcType=INTEGER},
+      </if>
+      <if test="inspectId != null">
+        inspect_id = #{inspectId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=FLOAT},
+      </if>
+      <if test="inspectPart != null">
+        inspect_part = #{inspectPart,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        `number` = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.bdqn.prescription.pojo.RecipeInspectDrug">
+    <!--@mbg.generated-->
+    update recipe_inspect_drug
+    set recipe_id = #{recipeId,jdbcType=INTEGER},
+      inspect_id = #{inspectId,jdbcType=INTEGER},
+      price = #{price,jdbcType=FLOAT},
+      inspect_part = #{inspectPart,jdbcType=VARCHAR},
+      `number` = #{number,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -16,6 +16,17 @@
             <groupId>com.clinic</groupId>
             <artifactId>clinic-result</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-        </dependency> 
+        </dependency>
+        <dependency>
+            <groupId>com.clinic</groupId>
+            <artifactId>clinic-medicine</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.clinic</groupId>
+            <artifactId>clinic-master-data</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 </project>

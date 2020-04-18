@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.prescription.mapper.RecipeWestTemplateDetailsMapper">
+    <resultMap id="BaseResultMap" type="cn.bdqn.prescription.pojo.RecipeWestTemplateDetails">
+        <!--@mbg.generated-->
+        <!--@Table recipe_west_template_details-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="recipe_template_id" jdbcType="INTEGER" property="recipeTemplateId"/>
+        <result column="medicine_id" jdbcType="INTEGER" property="medicineId"/>
+        <result column="pharmacy" jdbcType="VARCHAR" property="pharmacy"/>
+        <result column="usage" jdbcType="VARCHAR" property="usage"/>
+        <result column="frequentness" jdbcType="VARCHAR" property="frequentness"/>
+        <result column="days" jdbcType="VARCHAR" property="days"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, recipe_template_id, medicine_id, pharmacy, `usage`, frequentness, `days`
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from recipe_west_template_details
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from recipe_west_template_details
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id"
+            parameterType="cn.bdqn.prescription.pojo.RecipeWestTemplateDetails" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into recipe_west_template_details (recipe_template_id, medicine_id, pharmacy,
+        `usage`, frequentness, `days`
+        )
+        values (#{recipeTemplateId,jdbcType=INTEGER}, #{medicineId,jdbcType=INTEGER}, #{pharmacy,jdbcType=VARCHAR},
+        #{usage,jdbcType=VARCHAR}, #{frequentness,jdbcType=VARCHAR}, #{days,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="cn.bdqn.prescription.pojo.RecipeWestTemplateDetails" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into recipe_west_template_details
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="recipeTemplateId != null">
+                recipe_template_id,
+            </if>
+            <if test="medicineId != null">
+                medicine_id,
+            </if>
+            <if test="pharmacy != null">
+                pharmacy,
+            </if>
+            <if test="usage != null">
+                `usage`,
+            </if>
+            <if test="frequentness != null">
+                frequentness,
+            </if>
+            <if test="days != null">
+                `days`,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="recipeTemplateId != null">
+                #{recipeTemplateId,jdbcType=INTEGER},
+            </if>
+            <if test="medicineId != null">
+                #{medicineId,jdbcType=INTEGER},
+            </if>
+            <if test="pharmacy != null">
+                #{pharmacy,jdbcType=VARCHAR},
+            </if>
+            <if test="usage != null">
+                #{usage,jdbcType=VARCHAR},
+            </if>
+            <if test="frequentness != null">
+                #{frequentness,jdbcType=VARCHAR},
+            </if>
+            <if test="days != null">
+                #{days,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.bdqn.prescription.pojo.RecipeWestTemplateDetails">
+        <!--@mbg.generated-->
+        update recipe_west_template_details
+        <set>
+            <if test="recipeTemplateId != null">
+                recipe_template_id = #{recipeTemplateId,jdbcType=INTEGER},
+            </if>
+            <if test="medicineId != null">
+                medicine_id = #{medicineId,jdbcType=INTEGER},
+            </if>
+            <if test="pharmacy != null">
+                pharmacy = #{pharmacy,jdbcType=VARCHAR},
+            </if>
+            <if test="usage != null">
+                `usage` = #{usage,jdbcType=VARCHAR},
+            </if>
+            <if test="frequentness != null">
+                frequentness = #{frequentness,jdbcType=VARCHAR},
+            </if>
+            <if test="days != null">
+                `days` = #{days,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.bdqn.prescription.pojo.RecipeWestTemplateDetails">
+        <!--@mbg.generated-->
+        update recipe_west_template_details
+        set recipe_template_id = #{recipeTemplateId,jdbcType=INTEGER},
+        medicine_id = #{medicineId,jdbcType=INTEGER},
+        pharmacy = #{pharmacy,jdbcType=VARCHAR},
+        `usage` = #{usage,jdbcType=VARCHAR},
+        frequentness = #{frequentness,jdbcType=VARCHAR},
+        `days` = #{days,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <resultMap id="BaseResultMedicineMap" type="cn.bdqn.prescription.pojo.RecipeWestTemplateDetails">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="recipe_template_id" jdbcType="INTEGER" property="recipeTemplateId"/>
+        <result column="medicine_id" jdbcType="INTEGER" property="medicineId"/>
+        <result column="pharmacy" jdbcType="VARCHAR" property="pharmacy"/>
+        <result column="usage" jdbcType="VARCHAR" property="usage"/>
+        <result column="frequentness" jdbcType="VARCHAR" property="frequentness"/>
+        <result column="days" jdbcType="VARCHAR" property="days"/>
+    </resultMap>
+    <select id="finRecipeWestTemplateDetailsPage" resultMap="BaseResultMedicineMap">
+        SELECT rwtd.*,cmh.`id`
+        cid,cmh.`barcode`,cmh.`code`,cmh.`cost_price`,cmh.`factory`,cmh.`name`,cmh.`otc`,cmh.`type_id`
+        FROM recipe_west_template_details rwtd
+        JOIN clin_medicine.`his_medicine` cmh ON cmh.`id`=rwtd.`medicine_id`
+        <where>
+            <if test="typeId != null">
+                rwtd.`recipe_template_id`=#{typeId,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+</mapper>

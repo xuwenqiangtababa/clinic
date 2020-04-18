@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.master.mapper.PatientMapper">
+    <resultMap id="BaseResultMap" type="cn.bdqn.master.pojo.Patient">
+        <!--@mbg.generated-->
+        <!--@Table patient-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="patient_name" jdbcType="VARCHAR" property="patientName"/>
+        <result column="patient_age" jdbcType="INTEGER" property="patientAge"/>
+        <result column="patient_sex" jdbcType="VARCHAR" property="patientSex"/>
+        <result column="patient_date" jdbcType="DATE" property="patientDate"/>
+        <result column="patient_number" jdbcType="VARCHAR" property="patientNumber"/>
+        <result column="patient_see" jdbcType="INTEGER" property="patientSee"/>
+        <result column="patient_address" jdbcType="VARCHAR" property="patientAddress"/>
+        <result column="patient_phone" jdbcType="VARCHAR" property="patientPhone"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, patient_name, patient_age, patient_sex, patient_date, patient_number, patient_see,
+        patient_address, patient_phone
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from patient
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from patient
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.master.pojo.Patient"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into patient (patient_name, patient_age, patient_sex,
+        patient_date, patient_number, patient_see,
+        patient_address, patient_phone)
+        values (#{patientName,jdbcType=VARCHAR}, #{patientAge,jdbcType=INTEGER}, #{patientSex,jdbcType=VARCHAR},
+        #{patientDate,jdbcType=DATE}, #{patientNumber,jdbcType=VARCHAR}, #{patientSee,jdbcType=INTEGER},
+        #{patientAddress,jdbcType=VARCHAR}, #{patientPhone,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.master.pojo.Patient"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into patient
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="patientName != null">
+                patient_name,
+            </if>
+            <if test="patientAge != null">
+                patient_age,
+            </if>
+            <if test="patientSex != null">
+                patient_sex,
+            </if>
+            <if test="patientDate != null">
+                patient_date,
+            </if>
+            <if test="patientNumber != null">
+                patient_number,
+            </if>
+            <if test="patientSee != null">
+                patient_see,
+            </if>
+            <if test="patientAddress != null">
+                patient_address,
+            </if>
+            <if test="patientPhone != null">
+                patient_phone,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="patientName != null">
+                #{patientName,jdbcType=VARCHAR},
+            </if>
+            <if test="patientAge != null">
+                #{patientAge,jdbcType=INTEGER},
+            </if>
+            <if test="patientSex != null">
+                #{patientSex,jdbcType=VARCHAR},
+            </if>
+            <if test="patientDate != null">
+                #{patientDate,jdbcType=DATE},
+            </if>
+            <if test="patientNumber != null">
+                #{patientNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="patientSee != null">
+                #{patientSee,jdbcType=INTEGER},
+            </if>
+            <if test="patientAddress != null">
+                #{patientAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="patientPhone != null">
+                #{patientPhone,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.bdqn.master.pojo.Patient">
+        <!--@mbg.generated-->
+        update patient
+        <set>
+            <if test="patientName != null">
+                patient_name = #{patientName,jdbcType=VARCHAR},
+            </if>
+            <if test="patientAge != null">
+                patient_age = #{patientAge,jdbcType=INTEGER},
+            </if>
+            <if test="patientSex != null">
+                patient_sex = #{patientSex,jdbcType=VARCHAR},
+            </if>
+            <if test="patientDate != null">
+                patient_date = #{patientDate,jdbcType=DATE},
+            </if>
+            <if test="patientNumber != null">
+                patient_number = #{patientNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="patientSee != null">
+                patient_see = #{patientSee,jdbcType=INTEGER},
+            </if>
+            <if test="patientAddress != null">
+                patient_address = #{patientAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="patientPhone != null">
+                patient_phone = #{patientPhone,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.bdqn.master.pojo.Patient">
+        <!--@mbg.generated-->
+        update patient
+        set patient_name = #{patientName,jdbcType=VARCHAR},
+        patient_age = #{patientAge,jdbcType=INTEGER},
+        patient_sex = #{patientSex,jdbcType=VARCHAR},
+        patient_date = #{patientDate,jdbcType=DATE},
+        patient_number = #{patientNumber,jdbcType=VARCHAR},
+        patient_see = #{patientSee,jdbcType=INTEGER},
+        patient_address = #{patientAddress,jdbcType=VARCHAR},
+        patient_phone = #{patientPhone,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <resultMap id="BaseResultSeeTypeName" type="cn.bdqn.master.pojo.Patient">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="patient_name" jdbcType="VARCHAR" property="patientName"/>
+        <result column="patient_age" jdbcType="INTEGER" property="patientAge"/>
+        <result column="patient_sex" jdbcType="VARCHAR" property="patientSex"/>
+        <result column="patient_date" jdbcType="DATE" property="patientDate"/>
+        <result column="patient_number" jdbcType="VARCHAR" property="patientNumber"/>
+        <result column="patient_see" jdbcType="INTEGER" property="patientSee"/>
+        <result column="patient_address" jdbcType="VARCHAR" property="patientAddress"/>
+        <result column="patient_phone" jdbcType="VARCHAR" property="patientPhone"/>
+        <association property="seeType" javaType="cn.bdqn.master.pojo.SeeType">
+            <id column="sid" property="id"/>
+            <id column="see_id" property="seeId"/>
+            <id column="see_type_name" property="seeTypeName"/>
+        </association>
+    </resultMap>
+    <select id="finPatienAll" resultMap="BaseResultSeeTypeName">
+          SELECT p.*,s.`see_id`,s.`see_type_name`,s.`id` sid
+          FROM patient p
+          JOIN see_type s ON s.`see_id`=p.`patient_see`
+          <where>
+              <if test="username != null and username != ''">
+                  and p.`patient_name` LIKE CONCAT ('%',#{username},'%')
+              </if>
+              <if test="phone != null and phone != ''">
+                  and p.`patient_phone` LIKE CONCAT ('%',#{phone},'%')
+              </if>
+          </where>
+  </select>
+</mapper>

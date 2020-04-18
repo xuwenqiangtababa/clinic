@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.prescription.mapper.RecipeWestDrugMapper">
+  <resultMap id="BaseResultMap" type="cn.bdqn.prescription.pojo.RecipeWestDrug">
+    <!--@mbg.generated-->
+    <!--@Table recipe_west_drug-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="recipe_id" jdbcType="INTEGER" property="recipeId" />
+    <result column="medicine_id" jdbcType="INTEGER" property="medicineId" />
+    <result column="price" jdbcType="FLOAT" property="price" />
+    <result column="pharmacy" jdbcType="VARCHAR" property="pharmacy" />
+    <result column="usage" jdbcType="VARCHAR" property="usage" />
+    <result column="frequentness" jdbcType="VARCHAR" property="frequentness" />
+    <result column="days" jdbcType="VARCHAR" property="days" />
+    <result column="drug_date" jdbcType="VARCHAR" property="drugDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, recipe_id, medicine_id, price, pharmacy, `usage`, frequentness, `days`, drug_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from recipe_west_drug
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from recipe_west_drug
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.prescription.pojo.RecipeWestDrug" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into recipe_west_drug (recipe_id, medicine_id, price, 
+      pharmacy, `usage`, frequentness, 
+      `days`, drug_date)
+    values (#{recipeId,jdbcType=INTEGER}, #{medicineId,jdbcType=INTEGER}, #{price,jdbcType=FLOAT}, 
+      #{pharmacy,jdbcType=VARCHAR}, #{usage,jdbcType=VARCHAR}, #{frequentness,jdbcType=VARCHAR}, 
+      #{days,jdbcType=VARCHAR}, #{drugDate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.prescription.pojo.RecipeWestDrug" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into recipe_west_drug
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recipeId != null">
+        recipe_id,
+      </if>
+      <if test="medicineId != null">
+        medicine_id,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="pharmacy != null">
+        pharmacy,
+      </if>
+      <if test="usage != null">
+        `usage`,
+      </if>
+      <if test="frequentness != null">
+        frequentness,
+      </if>
+      <if test="days != null">
+        `days`,
+      </if>
+      <if test="drugDate != null">
+        drug_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recipeId != null">
+        #{recipeId,jdbcType=INTEGER},
+      </if>
+      <if test="medicineId != null">
+        #{medicineId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=FLOAT},
+      </if>
+      <if test="pharmacy != null">
+        #{pharmacy,jdbcType=VARCHAR},
+      </if>
+      <if test="usage != null">
+        #{usage,jdbcType=VARCHAR},
+      </if>
+      <if test="frequentness != null">
+        #{frequentness,jdbcType=VARCHAR},
+      </if>
+      <if test="days != null">
+        #{days,jdbcType=VARCHAR},
+      </if>
+      <if test="drugDate != null">
+        #{drugDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bdqn.prescription.pojo.RecipeWestDrug">
+    <!--@mbg.generated-->
+    update recipe_west_drug
+    <set>
+      <if test="recipeId != null">
+        recipe_id = #{recipeId,jdbcType=INTEGER},
+      </if>
+      <if test="medicineId != null">
+        medicine_id = #{medicineId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=FLOAT},
+      </if>
+      <if test="pharmacy != null">
+        pharmacy = #{pharmacy,jdbcType=VARCHAR},
+      </if>
+      <if test="usage != null">
+        `usage` = #{usage,jdbcType=VARCHAR},
+      </if>
+      <if test="frequentness != null">
+        frequentness = #{frequentness,jdbcType=VARCHAR},
+      </if>
+      <if test="days != null">
+        `days` = #{days,jdbcType=VARCHAR},
+      </if>
+      <if test="drugDate != null">
+        drug_date = #{drugDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.bdqn.prescription.pojo.RecipeWestDrug">
+    <!--@mbg.generated-->
+    update recipe_west_drug
+    set recipe_id = #{recipeId,jdbcType=INTEGER},
+      medicine_id = #{medicineId,jdbcType=INTEGER},
+      price = #{price,jdbcType=FLOAT},
+      pharmacy = #{pharmacy,jdbcType=VARCHAR},
+      `usage` = #{usage,jdbcType=VARCHAR},
+      frequentness = #{frequentness,jdbcType=VARCHAR},
+      `days` = #{days,jdbcType=VARCHAR},
+      drug_date = #{drugDate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

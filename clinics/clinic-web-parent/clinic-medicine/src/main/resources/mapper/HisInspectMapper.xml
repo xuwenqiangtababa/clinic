@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.medicine.mapper.HisInspectMapper">
+    <resultMap id="BaseResultMap" type="cn.bdqn.medicine.pojo.HisInspect">
+        <!--@mbg.generated-->
+        <!--@Table his_inspect-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="inspect_name" jdbcType="VARCHAR" property="inspectName"/>
+        <result column="inspect_type_id" jdbcType="VARCHAR" property="inspectTypeId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, inspect_name, inspect_type_id
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from his_inspect
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from his_inspect
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.medicine.pojo.HisInspect"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into his_inspect (inspect_name, inspect_type_id)
+        values (#{inspectName,jdbcType=VARCHAR}, #{inspectTypeId,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.medicine.pojo.HisInspect"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into his_inspect
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="inspectName != null">
+                inspect_name,
+            </if>
+            <if test="inspectTypeId != null">
+                inspect_type_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="inspectName != null">
+                #{inspectName,jdbcType=VARCHAR},
+            </if>
+            <if test="inspectTypeId != null">
+                #{inspectTypeId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.bdqn.medicine.pojo.HisInspect">
+        <!--@mbg.generated-->
+        update his_inspect
+        <set>
+            <if test="inspectName != null">
+                inspect_name = #{inspectName,jdbcType=VARCHAR},
+            </if>
+            <if test="inspectTypeId != null">
+                inspect_type_id = #{inspectTypeId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.bdqn.medicine.pojo.HisInspect">
+        <!--@mbg.generated-->
+        update his_inspect
+        set inspect_name = #{inspectName,jdbcType=VARCHAR},
+        inspect_type_id = #{inspectTypeId,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <resultMap id="BaseResultTypeMap" type="cn.bdqn.medicine.pojo.HisInspect">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="inspect_name" jdbcType="VARCHAR" property="inspectName"/>
+        <result column="inspect_type_id" jdbcType="VARCHAR" property="inspectTypeId"/>
+        <association property="hisInspectType" javaType="cn.bdqn.medicine.pojo.HisInspectType">
+            <id column="sid" property="id"/>
+            <id column="inspect_type_name" property="inspectTypeName"/>
+        </association>
+    </resultMap>
+    <select id="finHisInspect" resultMap="BaseResultTypeMap">
+        SELECT hi.*,hit.id sid,hit.`inspect_type_name`
+        FROM his_inspect hi
+        JOIN his_inspect_type hit ON hi.`inspect_type_id`=hit.id
+        <where>
+            <if test="typeId != null and typeId != ''">
+                and hit.id = #{typeId,jdbcType=INTEGER}
+            </if>
+            <if test="name != null and name != ''">
+                and hi.`inspect_name` LIKE CONCAT ('%',#{name,jdbcType=VARCHAR},'%')
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -13,7 +13,6 @@ import org.apache.http.client.utils.HttpClientUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 @Slf4j
 public class HttpClientHelper {
-    @Autowired
+
     private HttpServletRequest request;
 
     private ObjectMapper objectMapper = new ObjectMapper();

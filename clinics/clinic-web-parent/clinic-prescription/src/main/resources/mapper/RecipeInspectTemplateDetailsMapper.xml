@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.prescription.mapper.RecipeInspectTemplateDetailsMapper">
+    <resultMap id="BaseResultMap" type="cn.bdqn.prescription.pojo.RecipeInspectTemplateDetails">
+        <!--@mbg.generated-->
+        <!--@Table recipe_inspect_template_details-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="recipe_inspect_type_id" jdbcType="INTEGER" property="recipeInspectTypeId"/>
+        <result column="his_inspect_id" jdbcType="INTEGER" property="hisInspectId"/>
+        <result column="inspect_part" jdbcType="VARCHAR" property="inspectPart"/>
+        <result column="number" jdbcType="INTEGER" property="number"/>
+        <result column="inspect_price" jdbcType="FLOAT" property="inspectPrice"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, recipe_inspect_type_id, his_inspect_id, inspect_part, `number`, inspect_price,
+        remark
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from recipe_inspect_template_details
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from recipe_inspect_template_details
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id"
+            parameterType="cn.bdqn.prescription.pojo.RecipeInspectTemplateDetails" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into recipe_inspect_template_details (recipe_inspect_type_id, his_inspect_id,
+        inspect_part, `number`, inspect_price,
+        remark)
+        values (#{recipeInspectTypeId,jdbcType=INTEGER}, #{hisInspectId,jdbcType=INTEGER},
+        #{inspectPart,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, #{inspectPrice,jdbcType=FLOAT},
+        #{remark,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="cn.bdqn.prescription.pojo.RecipeInspectTemplateDetails" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into recipe_inspect_template_details
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="recipeInspectTypeId != null">
+                recipe_inspect_type_id,
+            </if>
+            <if test="hisInspectId != null">
+                his_inspect_id,
+            </if>
+            <if test="inspectPart != null">
+                inspect_part,
+            </if>
+            <if test="number != null">
+                `number`,
+            </if>
+            <if test="inspectPrice != null">
+                inspect_price,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="recipeInspectTypeId != null">
+                #{recipeInspectTypeId,jdbcType=INTEGER},
+            </if>
+            <if test="hisInspectId != null">
+                #{hisInspectId,jdbcType=INTEGER},
+            </if>
+            <if test="inspectPart != null">
+                #{inspectPart,jdbcType=VARCHAR},
+            </if>
+            <if test="number != null">
+                #{number,jdbcType=INTEGER},
+            </if>
+            <if test="inspectPrice != null">
+                #{inspectPrice,jdbcType=FLOAT},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.bdqn.prescription.pojo.RecipeInspectTemplateDetails">
+        <!--@mbg.generated-->
+        update recipe_inspect_template_details
+        <set>
+            <if test="recipeInspectTypeId != null">
+                recipe_inspect_type_id = #{recipeInspectTypeId,jdbcType=INTEGER},
+            </if>
+            <if test="hisInspectId != null">
+                his_inspect_id = #{hisInspectId,jdbcType=INTEGER},
+            </if>
+            <if test="inspectPart != null">
+                inspect_part = #{inspectPart,jdbcType=VARCHAR},
+            </if>
+            <if test="number != null">
+                `number` = #{number,jdbcType=INTEGER},
+            </if>
+            <if test="inspectPrice != null">
+                inspect_price = #{inspectPrice,jdbcType=FLOAT},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.bdqn.prescription.pojo.RecipeInspectTemplateDetails">
+        <!--@mbg.generated-->
+        update recipe_inspect_template_details
+        set recipe_inspect_type_id = #{recipeInspectTypeId,jdbcType=INTEGER},
+        his_inspect_id = #{hisInspectId,jdbcType=INTEGER},
+        inspect_part = #{inspectPart,jdbcType=VARCHAR},
+        `number` = #{number,jdbcType=INTEGER},
+        inspect_price = #{inspectPrice,jdbcType=FLOAT},
+        remark = #{remark,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <resultMap id="BaseResulInspecttMap" type="cn.bdqn.prescription.pojo.RecipeInspectTemplateDetails">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="recipe_inspect_type_id" jdbcType="INTEGER" property="recipeInspectTypeId"/>
+        <result column="his_inspect_id" jdbcType="INTEGER" property="hisInspectId"/>
+        <result column="inspect_part" jdbcType="VARCHAR" property="inspectPart"/>
+        <result column="number" jdbcType="INTEGER" property="number"/>
+        <result column="inspect_price" jdbcType="FLOAT" property="inspectPrice"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <association property="hisInspect" javaType="cn.bdqn.medicine.pojo.HisInspect">
+            <result column="inspect_name" property="inspectName"/>
+            <result column="inspect_type_id" property="inspectTypeId"/>
+        </association>
+    </resultMap>
+    <select id="finRecipeInspectTemplateDetailsAndInspet" resultMap="BaseResulInspecttMap">
+        SELECT ritd.*,cmh.inspect_name,cmh.inspect_type_id
+        FROM `recipe_inspect_template_details` ritd
+        JOIN clin_medicine.`his_inspect` cmh ON cmh.`id`=ritd.`his_inspect_id`
+        <where>
+            <if test="reciptId != null">
+                ritd.`recipe_inspect_type_id`=#{reciptId,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.prescription.mapper.RecipeWestTemplateMapper">
+    <resultMap id="BaseResultMap" type="cn.bdqn.prescription.pojo.RecipeWestTemplate">
+        <!--@mbg.generated-->
+        <!--@Table recipe_west_template-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="template_number" jdbcType="VARCHAR" property="templateNumber"/>
+        <result column="template_name" jdbcType="VARCHAR" property="templateName"/>
+        <result column="diagnose" jdbcType="VARCHAR" property="diagnose"/>
+        <result column="describe" jdbcType="VARCHAR" property="describe"/>
+        <result column="template_creator" jdbcType="VARCHAR" property="templateCreator"/>
+        <result column="creator_date" jdbcType="DATE" property="creatorDate"/>
+        <result column="recipe_template_type_id" jdbcType="VARCHAR" property="recipeTemplateTypeId"/>
+        <result column="jurisdiction" jdbcType="VARCHAR" property="jurisdiction"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, template_number, template_name, diagnose, `describe`, template_creator, creator_date,
+        recipe_template_type_id, jurisdiction
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from recipe_west_template
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from recipe_west_template
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.prescription.pojo.RecipeWestTemplate"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into recipe_west_template (template_number, template_name, diagnose,
+        `describe`, template_creator, creator_date,
+        recipe_template_type_id, jurisdiction)
+        values (#{templateNumber,jdbcType=VARCHAR}, #{templateName,jdbcType=VARCHAR}, #{diagnose,jdbcType=VARCHAR},
+        #{describe,jdbcType=VARCHAR}, #{templateCreator,jdbcType=VARCHAR}, #{creatorDate,jdbcType=DATE},
+        #{recipeTemplateTypeId,jdbcType=VARCHAR}, #{jurisdiction,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="cn.bdqn.prescription.pojo.RecipeWestTemplate" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into recipe_west_template
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="templateNumber != null">
+                template_number,
+            </if>
+            <if test="templateName != null">
+                template_name,
+            </if>
+            <if test="diagnose != null">
+                diagnose,
+            </if>
+            <if test="describe != null">
+                `describe`,
+            </if>
+            <if test="templateCreator != null">
+                template_creator,
+            </if>
+            <if test="creatorDate != null">
+                creator_date,
+            </if>
+            <if test="recipeTemplateTypeId != null">
+                recipe_template_type_id,
+            </if>
+            <if test="jurisdiction != null">
+                jurisdiction,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="templateNumber != null">
+                #{templateNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="templateName != null">
+                #{templateName,jdbcType=VARCHAR},
+            </if>
+            <if test="diagnose != null">
+                #{diagnose,jdbcType=VARCHAR},
+            </if>
+            <if test="describe != null">
+                #{describe,jdbcType=VARCHAR},
+            </if>
+            <if test="templateCreator != null">
+                #{templateCreator,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorDate != null">
+                #{creatorDate,jdbcType=DATE},
+            </if>
+            <if test="recipeTemplateTypeId != null">
+                #{recipeTemplateTypeId,jdbcType=VARCHAR},
+            </if>
+            <if test="jurisdiction != null">
+                #{jurisdiction,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.bdqn.prescription.pojo.RecipeWestTemplate">
+        <!--@mbg.generated-->
+        update recipe_west_template
+        <set>
+            <if test="templateNumber != null">
+                template_number = #{templateNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="templateName != null">
+                template_name = #{templateName,jdbcType=VARCHAR},
+            </if>
+            <if test="diagnose != null">
+                diagnose = #{diagnose,jdbcType=VARCHAR},
+            </if>
+            <if test="describe != null">
+                `describe` = #{describe,jdbcType=VARCHAR},
+            </if>
+            <if test="templateCreator != null">
+                template_creator = #{templateCreator,jdbcType=VARCHAR},
+            </if>
+            <if test="creatorDate != null">
+                creator_date = #{creatorDate,jdbcType=DATE},
+            </if>
+            <if test="recipeTemplateTypeId != null">
+                recipe_template_type_id = #{recipeTemplateTypeId,jdbcType=VARCHAR},
+            </if>
+            <if test="jurisdiction != null">
+                jurisdiction = #{jurisdiction,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.bdqn.prescription.pojo.RecipeWestTemplate">
+        <!--@mbg.generated-->
+        update recipe_west_template
+        set template_number = #{templateNumber,jdbcType=VARCHAR},
+        template_name = #{templateName,jdbcType=VARCHAR},
+        diagnose = #{diagnose,jdbcType=VARCHAR},
+        `describe` = #{describe,jdbcType=VARCHAR},
+        template_creator = #{templateCreator,jdbcType=VARCHAR},
+        creator_date = #{creatorDate,jdbcType=DATE},
+        recipe_template_type_id = #{recipeTemplateTypeId,jdbcType=VARCHAR},
+        jurisdiction = #{jurisdiction,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <resultMap id="BaseResultRectipeDatailsMap" type="cn.bdqn.prescription.pojo.RecipeWestTemplate">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="template_number" jdbcType="VARCHAR" property="templateNumber"/>
+        <result column="template_name" jdbcType="VARCHAR" property="templateName"/>
+        <result column="diagnose" jdbcType="VARCHAR" property="diagnose"/>
+        <result column="describe" jdbcType="VARCHAR" property="describe"/>
+        <result column="template_creator" jdbcType="VARCHAR" property="templateCreator"/>
+        <result column="creator_date" jdbcType="DATE" property="creatorDate"/>
+        <result column="recipe_template_type_id" jdbcType="VARCHAR" property="recipeTemplateTypeId"/>
+        <result column="jurisdiction" jdbcType="VARCHAR" property="jurisdiction"/>
+        <association property="recipeTemplateType" javaType="cn.bdqn.prescription.pojo.RecipeTemplateType">
+            <id column="rid" property="id"/>
+            <result column="recipe_template_type_name" property="recipeTemplateTypeName"/>
+        </association>
+    </resultMap>
+    <select id="finRecipeWestTemplateAll" resultMap="BaseResultRectipeDatailsMap">
+        SELECT DISTINCT rwt.*,rtt.`id` rid,rtt.`recipe_template_type_name`
+        FROM recipe_west_template rwt
+        JOIN recipe_west_template_details rwtd ON rwtd.`recipe_template_id`=rwt.`id`
+        JOIN recipe_template_type rtt ON rwt.`recipe_template_type_id`=rtt.`id`
+        <where>
+            <if test="reciperType != null">
+                and rtt.id=#{reciperType,jdbcType=INTEGER}
+            </if>
+            <if test="jurisdiction != null and jurisdiction != ''">
+                and rwt.`jurisdiction` LIKE CONCAT ('%',#{jurisdiction,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="repiperNumber != null and repiperNumber != ''">
+                and rwt.`template_number` LIKE CONCAT ('%',#{repiperNumber,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="repiperName != null and repiperName != ''">
+                and rwt.`template_name` LIKE CONCAT ('%',#{repiperName,jdbcType=VARCHAR},'%')
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.medicine.mapper.HisMedicineMapper">
+    <resultMap id="BaseResultMap" type="cn.bdqn.medicine.pojo.HisMedicine">
+        <!--@mbg.generated-->
+        <!--@Table his_medicine-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="type_id" jdbcType="INTEGER" property="typeId"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="barcode" jdbcType="VARCHAR" property="barcode"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="spec" jdbcType="VARCHAR" property="spec"/>
+        <result column="stock" jdbcType="VARCHAR" property="stock"/>
+        <result column="otc" jdbcType="VARCHAR" property="otc"/>
+        <result column="cost_price" jdbcType="INTEGER" property="costPrice"/>
+        <result column="sale_price" jdbcType="INTEGER" property="salePrice"/>
+        <result column="factory" jdbcType="VARCHAR" property="factory"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, type_id, code, barcode, `name`, spec, stock, otc, cost_price, sale_price, factory
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from his_medicine
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete from his_medicine
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.medicine.pojo.HisMedicine"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into his_medicine (type_id, code, barcode,
+        `name`, spec, stock,
+        otc, cost_price, sale_price,
+        factory)
+        values (#{typeId,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{barcode,jdbcType=VARCHAR},
+        #{name,jdbcType=VARCHAR}, #{spec,jdbcType=VARCHAR}, #{stock,jdbcType=VARCHAR},
+        #{otc,jdbcType=VARCHAR}, #{costPrice,jdbcType=INTEGER}, #{salePrice,jdbcType=INTEGER},
+        #{factory,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.medicine.pojo.HisMedicine"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into his_medicine
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="typeId != null">
+                type_id,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="barcode != null">
+                barcode,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="spec != null">
+                spec,
+            </if>
+            <if test="stock != null">
+                stock,
+            </if>
+            <if test="otc != null">
+                otc,
+            </if>
+            <if test="costPrice != null">
+                cost_price,
+            </if>
+            <if test="salePrice != null">
+                sale_price,
+            </if>
+            <if test="factory != null">
+                factory,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="typeId != null">
+                #{typeId,jdbcType=INTEGER},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="barcode != null">
+                #{barcode,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="spec != null">
+                #{spec,jdbcType=VARCHAR},
+            </if>
+            <if test="stock != null">
+                #{stock,jdbcType=VARCHAR},
+            </if>
+            <if test="otc != null">
+                #{otc,jdbcType=VARCHAR},
+            </if>
+            <if test="costPrice != null">
+                #{costPrice,jdbcType=INTEGER},
+            </if>
+            <if test="salePrice != null">
+                #{salePrice,jdbcType=INTEGER},
+            </if>
+            <if test="factory != null">
+                #{factory,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.bdqn.medicine.pojo.HisMedicine">
+        <!--@mbg.generated-->
+        update his_medicine
+        <set>
+            <if test="typeId != null">
+                type_id = #{typeId,jdbcType=INTEGER},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="barcode != null">
+                barcode = #{barcode,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="spec != null">
+                spec = #{spec,jdbcType=VARCHAR},
+            </if>
+            <if test="stock != null">
+                stock = #{stock,jdbcType=VARCHAR},
+            </if>
+            <if test="otc != null">
+                otc = #{otc,jdbcType=VARCHAR},
+            </if>
+            <if test="costPrice != null">
+                cost_price = #{costPrice,jdbcType=INTEGER},
+            </if>
+            <if test="salePrice != null">
+                sale_price = #{salePrice,jdbcType=INTEGER},
+            </if>
+            <if test="factory != null">
+                factory = #{factory,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.bdqn.medicine.pojo.HisMedicine">
+        <!--@mbg.generated-->
+        update his_medicine
+        set type_id = #{typeId,jdbcType=INTEGER},
+        code = #{code,jdbcType=VARCHAR},
+        barcode = #{barcode,jdbcType=VARCHAR},
+        `name` = #{name,jdbcType=VARCHAR},
+        spec = #{spec,jdbcType=VARCHAR},
+        stock = #{stock,jdbcType=VARCHAR},
+        otc = #{otc,jdbcType=VARCHAR},
+        cost_price = #{costPrice,jdbcType=INTEGER},
+        sale_price = #{salePrice,jdbcType=INTEGER},
+        factory = #{factory,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <resultMap id="BaseResultMapAndTypeName" type="cn.bdqn.medicine.pojo.HisMedicine">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="type_id" jdbcType="INTEGER" property="typeId"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="barcode" jdbcType="VARCHAR" property="barcode"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="spec" jdbcType="VARCHAR" property="spec"/>
+        <result column="stock" jdbcType="VARCHAR" property="stock"/>
+        <result column="otc" jdbcType="VARCHAR" property="otc"/>
+        <result column="cost_price" jdbcType="INTEGER" property="costPrice"/>
+        <result column="sale_price" jdbcType="INTEGER" property="salePrice"/>
+        <result column="factory" jdbcType="VARCHAR" property="factory"/>
+        <association property="hisMedicineType" javaType="cn.bdqn.medicine.pojo.HisMedicineType">
+            <id column="sid" property="id"/>
+            <result column="sname" property="name"/>
+        </association>
+    </resultMap>
+    <select id="finHisMedicineTypeAndMedicenName" resultMap="BaseResultMapAndTypeName">
+        select hsm.*,hmt.`id` as sid,hmt.`name` sname
+        from his_medicine hsm
+        join his_medicine_type hmt on hmt.`id`=hsm.`type_id`
+        <where>
+            <if test="typeId != null and typeId != ''">
+                and hsm.`type_id`=#{typeId}
+            </if>
+            <if test="username != null and username != ''">
+                and hsm.name like concat ('%',#{username,jdbcType=VARCHAR},"%")
+            </if>
+        </where>
+    </select>
+</mapper>

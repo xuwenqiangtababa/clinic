@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.master.mapper.AdditionMapper">
+  <resultMap id="BaseResultMap" type="cn.bdqn.master.pojo.Addition">
+    <!--@mbg.generated-->
+    <!--@Table addition-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="dosage" jdbcType="VARCHAR" property="dosage" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, dosage, `number`, price
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from addition
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from addition
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.master.pojo.Addition" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into addition (dosage, `number`, price
+      )
+    values (#{dosage,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.master.pojo.Addition" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into addition
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dosage != null">
+        dosage,
+      </if>
+      <if test="number != null">
+        `number`,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dosage != null">
+        #{dosage,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bdqn.master.pojo.Addition">
+    <!--@mbg.generated-->
+    update addition
+    <set>
+      <if test="dosage != null">
+        dosage = #{dosage,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        `number` = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.bdqn.master.pojo.Addition">
+    <!--@mbg.generated-->
+    update addition
+    set dosage = #{dosage,jdbcType=VARCHAR},
+      `number` = #{number,jdbcType=INTEGER},
+      price = #{price,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="finAdditionAll" resultMap="BaseResultMap">
+      select * from addition
+    </select>
+</mapper>

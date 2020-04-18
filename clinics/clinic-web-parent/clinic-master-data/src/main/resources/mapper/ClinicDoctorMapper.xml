@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.master.mapper.ClinicDoctorMapper">
+  <resultMap id="BaseResultMap" type="cn.bdqn.master.pojo.ClinicDoctor">
+    <!--@mbg.generated-->
+    <!--@Table clinic_doctor-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="doctor_name" jdbcType="VARCHAR" property="doctorName" />
+    <result column="section" jdbcType="VARCHAR" property="section" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, doctor_name, `section`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from clinic_doctor
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from clinic_doctor
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.master.pojo.ClinicDoctor" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into clinic_doctor (doctor_name, `section`)
+    values (#{doctorName,jdbcType=VARCHAR}, #{section,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bdqn.master.pojo.ClinicDoctor" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into clinic_doctor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="doctorName != null">
+        doctor_name,
+      </if>
+      <if test="section != null">
+        `section`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="doctorName != null">
+        #{doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="section != null">
+        #{section,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bdqn.master.pojo.ClinicDoctor">
+    <!--@mbg.generated-->
+    update clinic_doctor
+    <set>
+      <if test="doctorName != null">
+        doctor_name = #{doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="section != null">
+        `section` = #{section,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.bdqn.master.pojo.ClinicDoctor">
+    <!--@mbg.generated-->
+    update clinic_doctor
+    set doctor_name = #{doctorName,jdbcType=VARCHAR},
+      `section` = #{section,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="finClinicDoctor" resultMap="BaseResultMap">
+      select *
+      from clinic_doctor
+    </select>
+</mapper>
