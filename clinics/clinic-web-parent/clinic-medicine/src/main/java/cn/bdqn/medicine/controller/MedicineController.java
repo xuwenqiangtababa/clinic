@@ -14,6 +14,9 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Api
 @RestController
@@ -75,15 +79,21 @@ public class MedicineController {
         return new Response(ResponseEnum.SUCCESS).setResponseBody(hisMedicine);
     }
 
-    @ApiOperation(value = "药品类型Aip", response = Response.class)
-    @GetMapping("/mdicinetype")
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    @ApiOperation(value = "药品类型Api", response = Response.class)
+    @RequestMapping(value = "/mdicinetype", method = {RequestMethod.POST, RequestMethod.GET})
+//    @GetMapping("/mdicinetype")
     public Response getMedicineType() {
         List<HisMedicineType> hisMedicineTypes = null;
-        try {
+        ValueOperations valueOperations = redisTemplate.opsForValue();
+        Object medicines = valueOperations.get("medicines:medicine");
+        if (!EmptyUtil.isEmpty(medicines)) {
+            hisMedicineTypes = (List<HisMedicineType>) valueOperations.get("medicines:medicine");
+        } else {
             hisMedicineTypes = hisMedicineTypeService.finHisMedicineType();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new Response(ResponseEnum.ERROR).setResponseBody("查询药品类型api失败！");
+            valueOperations.set("medicines:medicine", hisMedicineTypes, 10, TimeUnit.MINUTES);
         }
         return new Response(ResponseEnum.SUCCESS).setResponseBody(hisMedicineTypes);
     }

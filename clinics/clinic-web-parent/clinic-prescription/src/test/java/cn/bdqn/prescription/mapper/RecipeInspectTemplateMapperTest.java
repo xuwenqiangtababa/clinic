@@ -1,11 +1,13 @@
 package cn.bdqn.prescription.mapper;
 
+import cn.bdqn.prescription.pojo.RecipeInspectTemplate;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 public class RecipeInspectTemplateMapperTest {
     private static RecipeInspectTemplateMapper mapper;
@@ -19,6 +21,7 @@ public class RecipeInspectTemplateMapperTest {
 
     @Test
     public void testFinRecipeInspectTemplateAll() throws FileNotFoundException {
-        mapper.finRecipeInspectTemplateAll(1,"人","0","1");
+        List<RecipeInspectTemplate> recipeInspectTemplates = mapper.finRecipeInspectTemplateAll(null, null, null, null);
     }
+
 }

@@ -2,7 +2,8 @@ package cn.bdnq.user.controller;
 
 import cn.bdnq.user.entity.User;
 import cn.bdnq.user.service.UserServer;
-import cn.clinic.response.RequesBean;
+import cn.clinic.response.Response;
+import cn.clinic.response.ResponseEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +21,8 @@ public class UserController {
 
     @GetMapping("/list")
     @ResponseBody
-    public RequesBean finUserById(@RequestParam("id") Integer userId) {
+    public Response finUserById(@RequestParam("id") Integer userId) {
         List<User> users = userServer.finAll(userId);
-        return RequesBean.ok(users);
+        return new Response(ResponseEnum.SUCCESS).setResponseBody(users);
     }
 }

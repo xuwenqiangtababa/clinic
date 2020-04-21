@@ -10,10 +10,13 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 
 /**
  * api调用demo
@@ -22,6 +25,7 @@ import javax.annotation.Resource;
  */
 @Api
 @RestController
+@RequestMapping("/api/recipe")
 public class RecipeController {
     @Value("${server.medicine.url}")
     private String serverMedicineUrl;
@@ -52,13 +56,16 @@ public class RecipeController {
         return new Response(ResponseEnum.SUCCESS).setResponseBody("添加处方关联表信息失败！");
     }
 
-//	@GetMapping("api/masterdata/users")
+    //	@GetMapping("api/masterdata/users")
 //	public Response getMasterdataUsers() {
 //		return httpClientHelper.getForResponse(serverMasterdataUrl + "/api/masterdata/users");
 //	}
-//	@GetMapping("api/medicine/users")
-//	public Response getUsers() {
-//		Response response = httpClientHelper.getForResponse(serverMedicineUrl + "/api/medicine/users");
-//		return response;
-//	}
+    private static final String CURRENT_SERVER_URL = "http://localhost:9005";
+
+    @GetMapping("/medicines/mdicinetype")
+    public Response getUsers() {
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        Response response = httpClientHelper.postForResponse(serverMedicineUrl + "/api/medicines/mdicinetype", map, CURRENT_SERVER_URL);
+        return response;
+    }
 }
