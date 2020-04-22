@@ -64,7 +64,6 @@ public class UserController {
             e.printStackTrace();
             return new Response(ResponseEnum.ERROR).setResponseBody("调用患者分页Api接口失败：" + e.getMessage().toString());
         }
-
     }
 
     @ApiOperation(value = "患者信息Api", response = Response.class)

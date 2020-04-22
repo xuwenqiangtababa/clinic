@@ -43,7 +43,7 @@ public class AdditionController {
     @ApiOperation(value = "添加附加费用api")
     @ApiImplicitParam(value = "添加附加费用，中间表", name = "recipeAddition")
     @PostMapping("/add")
-    public Response getAdd(RecipeAddition recipeAddition) {
+    public Response finAddAddition(RecipeAddition recipeAddition) {
         int insert = 0;
         try {
             insert = recipeAdditionService.insert(recipeAddition);

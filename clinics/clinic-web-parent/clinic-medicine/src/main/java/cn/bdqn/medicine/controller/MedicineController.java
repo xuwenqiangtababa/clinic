@@ -84,7 +84,6 @@ public class MedicineController {
 
     @ApiOperation(value = "药品类型Api", response = Response.class)
     @RequestMapping(value = "/mdicinetype", method = {RequestMethod.POST, RequestMethod.GET})
-//    @GetMapping("/mdicinetype")
     public Response getMedicineType() {
         List<HisMedicineType> hisMedicineTypes = null;
         ValueOperations valueOperations = redisTemplate.opsForValue();

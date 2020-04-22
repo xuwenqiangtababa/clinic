@@ -1,12 +1,14 @@
 package cn.bdqn.prescription.config;
 
 import cn.clinic.interceptor.SsoCookieWrapperInterceptor;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
+@EnableOAuth2Sso
 public class PrescripitionMvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
@@ -18,4 +20,5 @@ public class PrescripitionMvcConfig implements WebMvcConfigurer {
 		registry.addInterceptor(new SsoCookieWrapperInterceptor())
 		.addPathPatterns("/api/**");
 	}
+
 }

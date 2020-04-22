@@ -16,6 +16,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -39,7 +40,7 @@ public class InspectController {
             @ApiImplicitParam(value = "按名称查询", name = "name"),
             @ApiImplicitParam(value = "按类型查询", name = "typeId")
     })
-    @GetMapping("/index")
+    @RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
     public Response getInspect(Integer pageIndex, Integer pageSize, String name, Integer typeId) {
         List<HisInspect> hisInspects = null;
         try {
